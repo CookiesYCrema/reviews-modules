@@ -216,7 +216,7 @@ class ReviewList extends React.Component {
     .then(result => {
       this.setState({reviews: result.data}) 
       if (this.state.reviews.length === 0) {
-        this.createData();
+        // this.createData();
         this.fetchReviews();
       } else {
         this.fetchReviews();
@@ -264,6 +264,7 @@ class ReviewList extends React.Component {
   }
 
   increaseUsefulVotes(review) {
+    console.log(review);
     axios.post(`/api/reviews/${review._id}/usefulVotes`)
     .then(() => this.fetchReviews())
     .catch(err => console.log(err));

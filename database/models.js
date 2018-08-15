@@ -1,33 +1,55 @@
-const db = require('./index');
-const mongoose = require('mongoose');
+const models = require('./index');
 
-const restaurantSchema = mongoose.Schema({
-  restaurant: String
-})
-
-const reviewSchema = mongoose.Schema({
-  reviewData: {
-    id: String,
-    rating: Number,
-    time_created: Date,
-    text: String,
-    review_pic: String
+const RestaurantModel = models.loadSchema('restaurant', {
+  fields: {
+    restaurant_id: 'int',
+    restaurant: 'text',
   },
-  user: {
-    image_url: String,
-    name: String,
-    location: String,
-    friends: Number,
-    reviews: Number,
-    photos: Number,
-    elite: Boolean
+  key: ['restaurant_id'],
+});
+
+const ReviewModel = models.loadSchema('review', {
+  fields: {
+    review_id: 'int',
+    restaurant_id: 'int',
+    user_id: 'int',
+    useful_votes: { type: 'int', default: 0 },
+    funny_votes: { type: 'int', default: 0 },
+    cool_votes: { type: 'int', default: 0 },
+    rating: 'int',
+    time_created: 'timestamp',
+    text: 'text',
+    review_pic: 'text',
   },
-  usefulVotes: {type: Number, default: 0},
-  funnyVotes: {type: Number, default: 0},
-  coolVotes: {type: Number, default: 0},
-})
+  key: ['review_id', 'rating'],
+});
 
-const Review = mongoose.model('Review', reviewSchema)
-const Restaurant = mongoose.model('Restaurant', restaurantSchema)
+const UserModel = models.loadSchema('user', {
+  fields: {
+    user_id: 'int',
+    name: 'text',
+    user_image: 'text',
+    location: 'text',
+    friends: 'int',
+    reviews: 'int',
+    photos: 'int',
+    elite: 'boolean',
+  },
+  key: ['user_id'],
+});
 
-module.exports = {Restaurant, Review};
+RestaurantModel.syncDB((err) => {
+  if (err) throw err;
+});
+UserModel.syncDB((err) => {
+  if (err) { throw err; }
+});
+ReviewModel.syncDB((err) => {
+  if (err) { throw err; } else { console.log('cassandraDB connected'); }
+});
+
+module.exports = {
+  RestaurantModel,
+  ReviewModel,
+  UserModel,
+};

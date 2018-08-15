@@ -1,10 +1,12 @@
 const express = require('express');
 const parser = require('body-parser');
 const path = require('path');
-const db = require('../database');
 const helmet = require('helmet');
-const routes = require('./routes')
-require('dotenv').config()
+const morgan = require('morgan');
+const db = require('../database/MySql/models.js');
+const routes = require('./routes');
+
+require('dotenv').config();
 
 // const db = require('db')
 // db.connect({
@@ -17,10 +19,11 @@ const port = 3010;
 const server = express();
 
 server.use(helmet());
+server.use(morgan());
 server.use(parser.json());
-server.use(express.static(path.join(__dirname, '../client/dist')))
+server.use(express.static(path.join(__dirname, '../client/dist')));
 
-server.use(parser.urlencoded({extended: false}));
+server.use(parser.urlencoded({ extended: false }));
 
 server.use('/api/reviews', routes);
 

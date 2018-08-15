@@ -2,3 +2,7 @@
 bundle.js
 bundle.min.js
 node_modules
+/database/data
+/data3.csv
+/dataResto2.csv
+/reviews.csv

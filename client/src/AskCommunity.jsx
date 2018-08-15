@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 
 
 // import {EntireSection, Header, Divider, Button, Questions} from './askCommunityStyles'
@@ -27,7 +27,6 @@ import styles from '../dist/style.css';
 // const Questions = styled.div`
 //   font-size: 85%;
 // `
-
 // const Button = styled.button`
 //   backface-visibility: hidden;
 //   position: relative;

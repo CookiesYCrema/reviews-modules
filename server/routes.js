@@ -1,12 +1,13 @@
 const router = require('express').Router();
-const controller = require('./controller.js');
+// const controller = require('./controller.js');
+const controller = require('./controllerSQL.js');
 
 
 router.route('/')
-.get(controller.get)
-.post(controller.post)
-.get(controller.getRestaurant)
-.post(controller.postRestaurant)
+  .get(controller.get)
+  .post(controller.post);
+// .get(controller.getRestaurant)
+// .post(controller.postRestaurant)
 
 router.route('/:id/usefulVotes')
   .post(controller.useful);

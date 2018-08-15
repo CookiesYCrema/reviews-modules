@@ -1,13 +1,19 @@
-const mongoose = require('mongoose');
+const ExpressCassandra = require('express-cassandra');
 
-mongoose.connect('mongodb://localhost/reviewsDB');
-//{ useNewUrlParser: true }
-
-const db = mongoose.connection;
-
-db.on('error', console.error.bind(console, 'database connection error:'));
-db.once('open', function() {
-  console.log('Now connected to the reviews DB')
+const models = ExpressCassandra.createClient({
+  clientOptions: {
+    contactPoints: ['127.0.0.1'],
+    protocolOptions: { port: 9042 },
+    keyspace: 'yelpreviews',
+    queryOptions: { consistency: ExpressCassandra.consistencies.one },
+  },
+  ormOptions: {
+    defaultReplicationStrategy: {
+      class: 'SimpleStrategy',
+      replication_factor: 1,
+    },
+    migration: 'safe',
+  },
 });
 
-module.exports = db;
+module.exports = models;
