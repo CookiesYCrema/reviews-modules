@@ -22,7 +22,8 @@
   "scripts": {
     "build:watch": "webpack -w --config webpack.config.js",
     "build": "webpack --config webpack.config.js",
-    "start": "nodemon server/index.js",
+    "start:watch": "nodemon server/index.js",
+    "start": "node server/index.js",
     "test": "jest"
   },
   "author": "Hack Reactor",

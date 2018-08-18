@@ -214,6 +214,7 @@ class ReviewList extends React.Component {
   componentDidMount() {
     axios.get('/api/reviews')
     .then(result => {
+      console.log('revs got: ', result);
       this.setState({reviews: result.data}) 
       if (this.state.reviews.length === 0) {
         // this.createData();
@@ -264,7 +265,6 @@ class ReviewList extends React.Component {
   }
 
   increaseUsefulVotes(review) {
-    console.log(review);
     axios.post(`/api/reviews/${review._id}/usefulVotes`)
     .then(() => this.fetchReviews())
     .catch(err => console.log(err));
@@ -287,7 +287,7 @@ class ReviewList extends React.Component {
 
     const size = 10;
     const reviewDisplay = this.state.reviews.slice(0, size).map((review, index) => {
-      const dateToFormat = new Date(review.reviewData.time_created)
+      const dateToFormat = new Date(review.reviewData.time_created.trim())
       return (
         <li className={styles.singleReview} key={index}>
             

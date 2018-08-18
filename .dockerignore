@@ -1,0 +1,9 @@
+node_modules
+npm-debug.log
+.env
+bundle.js
+bundle.min.js
+/database/data
+/data3.csv
+/dataResto2.csv
+/reviews.csv

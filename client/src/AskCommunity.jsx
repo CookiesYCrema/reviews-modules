@@ -58,7 +58,7 @@ class AskCommunity extends React.Component {
   }
 
   compenentDidMount() {
-    console.log(this.props.restaurant)
+    console.log('resto: ', this.props.restaurant)
   }
 
   
