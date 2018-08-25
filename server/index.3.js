@@ -16,7 +16,7 @@ require('dotenv').config();
 //   password: process.env.DB_PASS
 // })
 
-const port = 3010;
+const port = 3030;
 const server = express();
 
 server.use(helmet());

@@ -1,0 +1,10 @@
+FROM node:8
+
+WORKDIR /reviews_pg
+COPY package*.json ./
+
+RUN npm install
+COPY . .
+EXPOSE 5432
+
+CMD [ "npm", "start" ]

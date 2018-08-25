@@ -9,6 +9,9 @@ router.route('/')
 // .get(controller.getRestaurant)
 // .post(controller.postRestaurant)
 
+router.route('/st')
+  .get(controller.getST);
+
 router.route('/:id/usefulVotes')
   .post(controller.useful);
 

@@ -1,0 +1,17 @@
+config:
+  target: "http://localhost:3011"
+  phases:
+    - duration: 20
+      arrivalRate: 350
+  payload:
+    path: "ids.csv"
+    fields:
+      - "ids"
+scenarios:
+  - name: "Search and buy"
+    flow:
+      - get:
+          url: "/api/reviews/?id={{ ids }}"
+          capture:
+            json: "$[0]._id"
+            as: "review"

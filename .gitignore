@@ -6,3 +6,8 @@ node_modules
 /data3.csv
 /dataResto2.csv
 /reviews.csv
+/database/databaseServer/node_modules
+/database/databaseServer/package-lock.json
+/newrelic.js
+ids.csv
+ids.csv
