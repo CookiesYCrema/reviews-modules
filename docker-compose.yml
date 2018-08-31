@@ -1,0 +1,12 @@
+version: '3.1'
+
+services:
+
+  adminer:
+    image: tristanneumann/yelpreviews
+    ports:
+      - 3010:3010
+    environment:
+      - DB
+    env_file:
+      - .env

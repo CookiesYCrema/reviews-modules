@@ -1,24 +1,24 @@
 const faker = require('faker');
 const fs = require('fs');
 // var read = fs.createReadStream('./read');
-const write = fs.createWriteStream('./data3.csv');
+const write = fs.createWriteStream('./database/data/dataReview.csv');
 
 function writeOneMillionTimes(writer, encoding, callback) {
-  let i = 10000000;
+  let i = 3000000;
   function write() {
     let ok = true;
     do {
       const model = [
         i.toString(), // reviewId:
         Math.floor(Math.random() * 5), // rating:
-        '2018-01-01T00:00:00.00Z', // time_stamp
+        '2018-01-01T00:00:00.00Z', // time_created
         faker.lorem.paragraph(), // text:
         faker.image.food(), // review_pic:
         1 + Math.floor(Math.random() * 999998), // restaurant id
         1 + Math.floor(Math.random() * 999998), // user id
-        0,
-        0,
-        0,
+        Math.floor(Math.random() * 10),
+        Math.floor(Math.random() * 10),
+        Math.floor(Math.random() * 10),
       ];
       i -= 1;
       if (i % 100000 === 0) { console.log(i); }

@@ -1,7 +1,10 @@
 const Sequelize = require('sequelize');
 
 const sequelize = new Sequelize('yelpreviews', 'postgres', 'postgres1', {
-  host: 'localhost',
+  host: process.env.DB,
+  // port: 5432,
+  // host: 'localhost',
+  // host: '54.183.247.91',
   dialect: 'postgres',
   operatorsAliases: false,
 

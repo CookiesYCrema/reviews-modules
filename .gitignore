@@ -10,4 +10,3 @@ node_modules
 /database/databaseServer/package-lock.json
 /newrelic.js
 ids.csv
-ids.csv

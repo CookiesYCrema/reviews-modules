@@ -17,8 +17,8 @@ class ReviewSection extends React.Component {
     super();
     this.state = {
       restaurants: ['Streich - Thompson', 'Daniel - Crist', 'Rippin and Sons', 'Haag, Boyle and Ledner', 'Swaniawski, Ondricka and Reinger'],
-      restaurant: ''
-    }
+      restaurant: '',
+    };
   }
 
   componentDidMount() {
